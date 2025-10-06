@@ -1,0 +1,7 @@
+{
+  "graphs": {
+    "inbound_team": "agent_engine/inbound_team/graph.js:inboundApp",
+    "outbound_team": "agent_engine/outbound_team/graph.js:outboundApp"
+  },
+  "env": "./.env"
+}

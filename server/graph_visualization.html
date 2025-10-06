@@ -1,0 +1,85 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Agent Optimus Graph Visualization</title>
+            <style>
+                body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 20px; background-color: #f8f9fa; }
+                .graph-container { border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; background-color: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05); width: 90%; }
+                h1 { text-align: center; color: #2d3748; }
+                pre.mermaid { text-align: center; }
+            </style>
+        </head>
+        <body>
+            <div class="graph-container"><h1>Inbound Team ("The Qualifier")</h1><pre class="mermaid">%%{init: {'flowchart': {'curve': 'linear'}}}%%
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	analyst(analyst)
+	supervisor(supervisor)
+	communicator(communicator)
+	crmOperator(crmOperator)
+	bookingCoordinator(bookingCoordinator)
+	humanReviewRequester(humanReviewRequester)
+	ragRetriever(ragRetriever)
+	housekeeper(housekeeper)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> analyst;
+	analyst --> supervisor;
+	bookingCoordinator --> housekeeper;
+	communicator --> housekeeper;
+	crmOperator --> supervisor;
+	housekeeper --> __end__;
+	humanReviewRequester --> housekeeper;
+	ragRetriever --> communicator;
+	supervisor -.-> analyst;
+	supervisor -.-> communicator;
+	supervisor -.-> crmOperator;
+	supervisor -.-> bookingCoordinator;
+	supervisor -.-> humanReviewRequester;
+	supervisor -.-> ragRetriever;
+	supervisor -.-> housekeeper;
+	supervisor -.-> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2;
+	classDef first fill-opacity:0;
+	classDef last fill:#bfb6fc;
+</pre></div>
+            <div class="graph-container"><h1>Outbound Team ("The Closer")</h1><pre class="mermaid">%%{init: {'flowchart': {'curve': 'linear'}}}%%
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	analyst(analyst)
+	supervisor(supervisor)
+	communicator(communicator)
+	crmOperator(crmOperator)
+	bookingCoordinator(bookingCoordinator)
+	humanReviewRequester(humanReviewRequester)
+	ragRetriever(ragRetriever)
+	housekeeper(housekeeper)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> analyst;
+	analyst --> supervisor;
+	bookingCoordinator --> housekeeper;
+	communicator --> housekeeper;
+	crmOperator --> supervisor;
+	housekeeper --> __end__;
+	humanReviewRequester --> housekeeper;
+	ragRetriever --> communicator;
+	supervisor -.-> analyst;
+	supervisor -.-> communicator;
+	supervisor -.-> crmOperator;
+	supervisor -.-> bookingCoordinator;
+	supervisor -.-> humanReviewRequester;
+	supervisor -.-> ragRetriever;
+	supervisor -.-> housekeeper;
+	supervisor -.-> __end__;
+	classDef default fill:#f2f0ff,line-height:1.2;
+	classDef first fill-opacity:0;
+	classDef last fill:#bfb6fc;
+</pre></div>
+            <script type="module">
+                import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+                mermaid.initialize({ startOnLoad: true });
+            </script>
+        </body>
+        </html>
+        

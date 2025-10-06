@@ -1,0 +1,60 @@
+# A variable to hold the server address for easy reuse
+@baseUrl = http://localhost:5001/api
+
+###
+# 1. Import New Leads into a Campaign
+# This simulates your CSV upload process.
+POST {{baseUrl}}/leads/import
+Content-Type: application/json
+
+{
+  "campaignName": "Anvil Property Smith - Test",
+  "leads": [
+    {
+      "name": "Matthew Marvin (Test)",
+      "position": "CEO",
+      "phoneNumber": "27872348000",
+      "email": "mattm@anvilproperty.co.za"
+    },
+    {
+      "name": "Lydon Hanger-Hill (Test)",
+      "position": "Property Practitioner",
+      "phoneNumber": "27760125448",
+      "email": "lydonh@anvilproperty.co.za"
+    }
+  ]
+}
+
+###
+# 2. Get All Leads
+# This will fetch the two leads we just created.
+GET {{baseUrl}}/leads
+
+###
+# 3. Update a Lead's Stage
+# IMPORTANT: You must copy an "id" from the response of the request above
+# and paste it here in place of <paste_lead_id_here>.
+@leadId =58efa11e-a32f-4b98-b56b-d82c3f3bd7ba
+
+PUT {{baseUrl}}/leads/{{leadId}}/stage
+Content-Type: application/json
+
+{
+  "newStage": "Engaged"
+}
+
+
+###
+# 4. Get a Single Lead by ID
+# This will fetch the updated details for the lead you just changed.
+GET {{baseUrl}}/leads/{{leadId}}
+
+###
+# 5. Send a Message to a Lead
+# This uses the ID from the variable above.
+POST {{baseUrl}}/leads/{{leadId}}/messages
+Content-Type: application/json
+
+{
+  "messageText": "Hello from Optimus CRM! This is an automated test message."
+}
